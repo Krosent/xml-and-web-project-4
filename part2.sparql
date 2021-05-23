@@ -11,10 +11,10 @@ select distinct ?o where {
 
 # Query 3 - Return TOP 10 Topics CSO with its count and name
 PREFIX aida35kschema: <http://aida.kmi.open.ac.uk/aida35k/ontology#>
-select ?s (count(?o) as ?NumberOfPapers) ?name where { 
-    ?s aida35kschema:hasJourName ?name .
-	?s 	aida35kschema:hasCsoEnhancedTopic ?o .
-} GROUP BY ?s ?name ORDER BY DESC(?NumberOfPapers) LIMIT 10
+select ?topic (count(?paper) as ?numberOfPapers) ?name where { 
+    ?topic aida35kschema:hasJourName ?name .
+	?topic 	aida35kschema:hasCsoEnhancedTopic ?paper .
+} GROUP BY ?topic ?name ORDER BY DESC(?numberOfPapers) LIMIT 10
 
 
 # Query 4 - papers of the conference series ‘iswc’, count their references (citations), 
@@ -27,8 +27,21 @@ select (?s as ?paper) ?conf (count(?ref) as ?numberOfRefs) where {
 } GROUP BY ?s ?conf ORDER BY DESC(?NumberOfRefs)
 
 
-# Query 5
+# Query 5 - Find all authors that have an Affiliation with ULB, and present them along with their papers.
+PREFIX aida35kschema: <http://aida.kmi.open.ac.uk/aida35k/ontology#>
+select ?author ?paper ?affiliation where {
+    ?author aida35kschema:hasPaper ?paper .
+    ?paper aida35kschema:hasAffiliationDistribution ?ad .
+    ?ad aida35kschema:hasAffiliation ?affiliation .
+    filter contains(?affiliation,"bruxelles") .
+}
 
-# Query 6
+# Query 6 - get abstract for the paper
+PREFIX aida35kschema: <http://aida.kmi.open.ac.uk/aida35k/ontology#>
+PREFIX ns4: <http://purl.org/dc/terms/>
+select ?abstract where { 
+    SERVICE <https://makg.org/sparql> { 
+    <https://makg.org/entity/1642143707> ns4:abstract ?abstract } 
+}
 
 # Query 7
