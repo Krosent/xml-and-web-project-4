@@ -9,10 +9,23 @@ select distinct ?o where {
 	?s 	aida35kschema:hasCsoEnhancedTopic ?o .
 }
 
+# Query 3 - Return TOP 10 Topics CSO with its count and name
+PREFIX aida35kschema: <http://aida.kmi.open.ac.uk/aida35k/ontology#>
+select ?s (count(?o) as ?NumberOfPapers) ?name where { 
+    ?s aida35kschema:hasJourName ?name .
+	?s 	aida35kschema:hasCsoEnhancedTopic ?o .
+} GROUP BY ?s ?name ORDER BY DESC(?NumberOfPapers) LIMIT 10
 
-# Query 3
 
-# Query 4
+# Query 4 - papers of the conference series ‘iswc’, count their references (citations), 
+# and present them in decrease order of their count.
+PREFIX aida35kschema: <http://aida.kmi.open.ac.uk/aida35k/ontology#>
+select (?s as ?paper) ?conf (count(?ref) as ?numberOfRefs) where { 
+	?s 	aida35kschema:hasConfName ?conf .
+    ?s aida35kschema:hasReference ?ref .
+    filter contains(?conf,"iswc") .  
+} GROUP BY ?s ?conf ORDER BY DESC(?NumberOfRefs)
+
 
 # Query 5
 
