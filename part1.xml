@@ -1,0 +1,271 @@
+Prefix: : <http://aida.kmi.open.ac.uk/ontology#>
+Prefix: c: <http://advfn.com/concert#>
+Prefix: p: <http://sissvoc.info/def/pizza/>
+Prefix: dc: <http://purl.org/dc/elements/1.1/>
+Prefix: dt: <urn:schemas-microsoft-com:datatypes>
+Prefix: ov: <http://open.vocab.org/terms/>
+Prefix: sh: <http://www.w3.org/ns/shacl#>
+Prefix: vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#>
+Prefix: dct: <http://purl.org/dc/terms/>
+Prefix: j.0: <http://purl.org/dc/terms/>
+Prefix: ns0: <http://cohse.semanticweb.org/ontologies/people#>
+Prefix: obo: <http://purl.obolibrary.org/obo/>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: sdo: <http://schema.org/>
+Prefix: tag: <https://brickschema.org/schema/BrickTag#>
+Prefix: wot: <http://xmlns.com/wot/0.1/>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+Prefix: xsp: <http://www.owl-ontologies.com/2005/08/07/xsp.owl#>
+Prefix: csos: <http://cso.kmi.open.ac.uk/schema/cso#>
+Prefix: doap: <http://usefulinc.com/ns/doap#>
+Prefix: doid: <http://purl.obolibrary.org/obo/doid#>
+Prefix: foaf: <http://xmlns.com/foaf/0.1/>
+Prefix: orgz: <http://www.w3.org/ns/org#>
+Prefix: qudt: <http://qudt.org/schema/qudt/>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: skos: <http://www.w3.org/2004/02/skos/core#>
+Prefix: sosa: <http://www.w3.org/ns/sosa#>
+Prefix: swrl: <http://www.w3.org/2003/11/swrl#>
+Prefix: unit: <http://qudt.org/vocab/unit/>
+Prefix: vann: <http://purl.org/vocab/vann/>
+Prefix: brick: <https://brickschema.org/schema/Brick#>
+Prefix: pizza: <http://www.co-ode.org/ontologies/pizza/pizza.owl#>
+Prefix: swrlb: <http://www.w3.org/2003/11/swrlb#>
+Prefix: terms: <http://purl.org/dc/terms/>
+Prefix: vcard: <http://www.w3.org/2006/vcard/ns#>
+Prefix: qudtqk: <http://qudt.org/vocab/quantitykind/>
+Prefix: dcterms: <http://purl.org/dc/terms#>
+Prefix: protege: <http://protege.stanford.edu/plugins/owl/protege#>
+Prefix: oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
+Prefix: family-ontology: <http://www.semanticweb.org/youssef/ontologies/2021/4/family-ontology#>
+
+Ontology: 
+AnnotationProperty: hasDBpediaCategory
+    Annotations: 
+        rdfs:comment "We use this relation to indicate the industrial sector given by DBpedia in About:Property and About:Industry .",
+        rdfs:label "classified by DBpedia as"@en
+    Annotations: 
+        rdfs:comment "We use this relation to indicate the industrial sector given by DBpedia in About:Property and About:Industry .",
+        rdfs:label "classified by DBpedia as"@en
+    Domain: 
+        <_:genid1080818>
+    
+AnnotationProperty: rdfs:label
+
+AnnotationProperty: rdfs:comment
+
+Datatype: rdf:PlainLiteral
+
+Datatype: rdfs:Literal
+
+ObjectProperty: hasIndustrialSector
+    Annotations: 
+        rdfs:label "has industrial category"@en,
+        rdfs:comment "We use this relation to indicate the industrial sector of affiliation."
+    
+    Domain: 
+        (affiliation or paper or patent)
+    
+    Range: 
+        industrialSector
+    
+ObjectProperty: hasAffiliationType
+    Annotations: 
+        rdfs:comment "We use this relation to indicate the type of the paper: academia, industry, collaborative.",
+        rdfs:label "has affiliation type"@en
+    Domain: 
+        paper
+    
+ObjectProperty: hasPercentageOfAcademy
+    Annotations: 
+        rdfs:label "has percentage of academy"@en,
+        rdfs:comment "We use this relation to indicate the percentage of authors who authored this paper, and belong to academia." 
+    Domain: 
+        paper
+    
+ObjectProperty: hasTopic
+    Annotations: 
+        rdfs:label "has topic"@en,
+        rdfs:comment "We use this relation to indicate the topics identified in a paper (including syntactic and semantic)."
+    
+    Domain: 
+        (paper or patent)
+    
+    Range: 
+        csos:Topic
+    
+ObjectProperty: hasSyntacticTopic
+    Annotations: 
+        rdfs:comment "We use this relation to indicate the syntactic topics identified in a paper.",
+        rdfs:label "has syntactic topic"@en
+    
+    Domain: 
+        (paper or patent)
+    
+    Range: 
+        csos:Topic
+    
+ObjectProperty: hasPercentageOfIndustry
+    Annotations: 
+        rdfs:label "has percentage of industry"@en,
+        rdfs:comment "We use this relation to indicate the percentage of authors who authored this paper, and belong to industry."
+    Domain: 
+        paper
+     
+ObjectProperty: hasGridType
+    Annotations: 
+        rdfs:label "has grid type"@en,
+        rdfs:comment "We use this relation to indicate the type of the affiliation according to the GRID classification: Education, Company, Government, Non-profit and others."
+    Domain: 
+        affiliation
+    
+ObjectProperty: hasAssigneeGridType
+    Annotations: 
+        rdfs:label "has affiliation type"@en,
+        rdfs:comment "We use this relation to indicate the type of the assignee according to the GRID classification: Education, Company, Government, Non-profit and others."
+    Domain: 
+        patent
+    
+ObjectProperty: hasCurrentAssigneeType
+    Annotations: 
+        rdfs:label "has affiliation type"@en,
+        rdfs:comment "We use this relation to indicate the type of the current assignee: academia, industry, collaborative."
+    Domain: 
+        patent
+    
+ObjectProperty: hasOriginalAssigneeType
+    Annotations: 
+        rdfs:label "has affiliation type"@en,
+        rdfs:comment "We use this relation to indicate the type of the original assignee: academia, industry, collaborative."
+    Domain: 
+        patent
+    
+ObjectProperty: hasSemanticTopic
+    Annotations: 
+        rdfs:label "has semantic topic"@en,
+        rdfs:comment "We use this relation to indicate the semantic topics identified in a paper."
+    Domain: 
+        (paper or patent)
+    Range: 
+        csos:Topic
+    
+ObjectProperty: isInDimensionsWithId
+    Annotations: 
+        rdfs:comment "We use this relation to indicate the id used in Dimensions database.",
+        rdfs:label "is in dimensions with id"@en
+    Domain: 
+        patent
+    
+    
+ObjectProperty: hasDBpediaCategory
+    Annotations: 
+        rdfs:comment "We use this relation to indicate the industrial sector given by DBpedia in About:Property and About:Industry .",
+        rdfs:label "classified by DBpedia as"@en
+    Range: 
+        DBpediaCategory
+    
+    
+DataProperty: hasOriginalAssigneeType
+    Annotations: 
+        rdfs:label "has affiliation type"@en,
+        rdfs:comment "We use this relation to indicate the type of the original assignee: academia, industry, collaborative."
+    Range: 
+        rdfs:Literal
+     
+DataProperty: hasPercentageOfIndustry
+    Annotations: 
+        rdfs:label "has percentage of industry"@en,
+        rdfs:comment "We use this relation to indicate the percentage of authors who authored this paper, and belong to industry."
+    Range: 
+        rdfs:Literal
+    
+DataProperty: hasGridType
+    Annotations: 
+        rdfs:label "has grid type"@en,
+        rdfs:comment "We use this relation to indicate the type of the affiliation according to the GRID classification: Education, Company, Government, Non-profit and others."
+    Range: 
+        rdfs:Literal
+     
+DataProperty: hasAffiliationType
+    Annotations: 
+        rdfs:comment "We use this relation to indicate the type of the paper: academia, industry, collaborative.",
+        rdfs:label "has affiliation type"@en
+    Range: 
+        rdfs:Literal
+    
+DataProperty: hasPercentageOfAcademy
+    Annotations: 
+        rdfs:label "has percentage of academy"@en,
+        rdfs:comment "We use this relation to indicate the percentage of authors who authored this paper, and belong to academia."
+    Range: 
+        rdfs:Literal
+    
+DataProperty: isInDimensionsWithId
+    Annotations: 
+        rdfs:comment "We use this relation to indicate the id used in Dimensions database.",
+        rdfs:label "is in dimensions with id"@en
+    Range: 
+        rdfs:Literal
+    
+DataProperty: hasCurrentAssigneeType
+    Annotations: 
+        rdfs:label "has affiliation type"@en,
+        rdfs:comment "We use this relation to indicate the type of the current assignee: academia, industry, collaborative."
+    Range: 
+        rdfs:Literal
+    
+DataProperty: hasAssigneeGridType
+    Annotations: 
+        rdfs:label "has affiliation type"@en,
+        rdfs:comment "We use this relation to indicate the type of the assignee according to the GRID classification: Education, Company, Government, Non-profit and others."
+    Range: 
+        rdfs:Literal
+    
+    
+Class: owl:Thing
+
+Class: DBpediaCategory
+    Annotations: 
+        rdfs:comment "This class is populated by all the categories that we inferred from DBpedia. As some of them are literals we created a class."
+    SubClassOf: 
+        owl:Thing
+
+Class: foaf:Agent
+
+Class: industrialSector
+
+    SubClassOf: 
+        owl:Thing
+    
+Class: patent
+    SubClassOf: 
+        owl:Thing
+      
+Class: csos:Topic
+   
+Class: author
+    SubClassOf: 
+        foaf:Agent  
+    
+Class: paper
+    SubClassOf: 
+        owl:Thing
+    
+Class: owl:Objectproperty
+
+Class: orgz:Organization
+    
+Class: affiliation
+    SubClassOf: 
+        orgz:Organization
+    
+Individual: hasDBpediaCategory
+    Annotations: 
+        rdfs:comment "We use this relation to indicate the industrial sector given by DBpedia in About:Property and About:Industry .",
+        rdfs:label "classified by DBpedia as"@en
+    Types: 
+        owl:Objectproperty
+    
+    
