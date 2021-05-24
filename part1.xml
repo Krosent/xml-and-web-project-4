@@ -1,3 +1,7 @@
+###########
+### Prefixes ###
+###########
+
 Prefix: : <http://aida.kmi.open.ac.uk/ontology#>
 Prefix: c: <http://advfn.com/concert#>
 Prefix: p: <http://sissvoc.info/def/pizza/>
@@ -41,6 +45,10 @@ Prefix: protege: <http://protege.stanford.edu/plugins/owl/protege#>
 Prefix: oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
 Prefix: family-ontology: <http://www.semanticweb.org/youssef/ontologies/2021/4/family-ontology#>
 
+###########
+### Properties ###
+###########
+
 Ontology: 
 AnnotationProperty: hasDBpediaCategory
     Annotations: 
@@ -50,7 +58,7 @@ AnnotationProperty: hasDBpediaCategory
         rdfs:comment "We use this relation to indicate the industrial sector given by DBpedia in About:Property and About:Industry .",
         rdfs:label "classified by DBpedia as"@en
     Domain: 
-        <_:genid1080818>
+        (affiliation or paper or patent)
     
 AnnotationProperty: rdfs:label
 
@@ -223,7 +231,10 @@ DataProperty: hasAssigneeGridType
     Range: 
         rdfs:Literal
     
-    
+###########
+### Classes ###
+###########
+
 Class: owl:Thing
 
 Class: DBpediaCategory
@@ -235,7 +246,6 @@ Class: DBpediaCategory
 Class: foaf:Agent
 
 Class: industrialSector
-
     SubClassOf: 
         owl:Thing
     
@@ -261,6 +271,10 @@ Class: affiliation
     SubClassOf: 
         orgz:Organization
     
+###########
+### Individuals ###
+###########
+
 Individual: hasDBpediaCategory
     Annotations: 
         rdfs:comment "We use this relation to indicate the industrial sector given by DBpedia in About:Property and About:Industry .",

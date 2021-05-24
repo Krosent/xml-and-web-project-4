@@ -44,4 +44,19 @@ select ?abstract where {
     <https://makg.org/entity/1642143707> ns4:abstract ?abstract } 
 }
 
-# Query 7
+# Query 7 - Find all papers that have an Affiliation with ULB, 
+# and for each one retrieve its abstract from the remote MAKG SPARQL endpoint
+PREFIX aida35kschema: <http://aida.kmi.open.ac.uk/aida35k/ontology#>
+PREFIX aida35k: <http://aida.kmi.open.ac.uk/aida35k/resource/>
+PREFIX ns4: <http://purl.org/dc/terms/>
+
+select ?paper ?abstract  where {
+    ?author aida35kschema:hasPaper ?paper .
+    ?paper aida35kschema:hasAffiliationDistribution ?ad .
+    ?ad aida35kschema:hasAffiliation ?affiliation .
+    filter contains(?affiliation,"bruxelles") .
+    BIND(STRAFTER(str(?paper), "http://aida.kmi.open.ac.uk/aida35k/resource/p_") AS ?resource_id). 
+    bind(IRI(concat("https://makg.org/entity/", ?resource_id)) as ?uri)
+    SERVICE <https://makg.org/sparql> { 
+    ?uri ns4:abstract ?abstract } 
+}
