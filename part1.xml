@@ -72,10 +72,8 @@ ObjectProperty: hasIndustrialSector
     Annotations: 
         rdfs:label "has industrial category"@en,
         rdfs:comment "We use this relation to indicate the industrial sector of affiliation."
-    
     Domain: 
         (affiliation or paper or patent)
-    
     Range: 
         industrialSector
     
@@ -97,10 +95,8 @@ ObjectProperty: hasTopic
     Annotations: 
         rdfs:label "has topic"@en,
         rdfs:comment "We use this relation to indicate the topics identified in a paper (including syntactic and semantic)."
-    
     Domain: 
         (paper or patent)
-    
     Range: 
         csos:Topic
     
@@ -108,10 +104,8 @@ ObjectProperty: hasSyntacticTopic
     Annotations: 
         rdfs:comment "We use this relation to indicate the syntactic topics identified in a paper.",
         rdfs:label "has syntactic topic"@en
-    
     Domain: 
         (paper or patent)
-    
     Range: 
         csos:Topic
     

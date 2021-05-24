@@ -1,20 +1,20 @@
 # Query 1 - Return all unique affiliations.
 PREFIX aida35kschema: <http://aida.kmi.open.ac.uk/aida35k/ontology#>
-select distinct ?o where { 
-	?s 	aida35kschema:hasAffiliation ?o .
+select distinct ?affiliation where { 
+	?s 	aida35kschema:hasAffiliation ?affiliation .
 }
 # Query 2 - Return all distinct CSO topics.
 PREFIX aida35kschema: <http://aida.kmi.open.ac.uk/aida35k/ontology#>
-select distinct ?o where { 
-	?s 	aida35kschema:hasCsoEnhancedTopic ?o .
+select distinct ?topic where { 
+	?s 	aida35kschema:hasCsoEnhancedTopic ?topic .
 }
 
 # Query 3 - Return TOP 10 Topics CSO with its count and name
 PREFIX aida35kschema: <http://aida.kmi.open.ac.uk/aida35k/ontology#>
 select ?topic (count(?paper) as ?numberOfPapers) ?name where { 
-    ?topic aida35kschema:hasJourName ?name .
-	?topic 	aida35kschema:hasCsoEnhancedTopic ?paper .
-} GROUP BY ?topic ?name ORDER BY DESC(?numberOfPapers) LIMIT 10
+    ?paper aida35kschema:hasJourName ?name .
+	?paper 	aida35kschema:hasCsoEnhancedTopic ?topic .
+} GROUP BY ?topic ?name ORDER BY DESC(?numberOfPapers) LIMIT 10 
 
 
 # Query 4 - papers of the conference series ‘iswc’, count their references (citations), 
